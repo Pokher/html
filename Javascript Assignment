@@ -1,0 +1,238 @@
+//Assignment 1
+
+//Q1
+const utcDate = new Date();
+const offset = 5.5;
+const istDate = new Date(utcDate.getTime() + (offset * 60 * 60 * 1000));
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const dayOfWeek = days[istDate.getUTCDay()];
+const hours = istDate.getUTCHours();
+const minutes = istDate.getUTCMinutes();
+const seconds = istDate.getUTCSeconds();
+const ampm = hours >= 12 ? 'PM' : 'AM';
+let formattedHours = hours % 12;
+formattedHours = formattedHours ? formattedHours : 12;
+const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+console.log(`Today is: ${dayOfWeek}`);
+console.log(`Current time is: ${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`);
+
+//Q2
+const htmlContent = document.documentElement.outerHTML;
+console.log(htmlContent);
+
+//Q3
+const currentDate = new Date();
+
+const format1 = currentDate.toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Kolkata'
+});
+console.log(`mm-dd-yy: ${format1}`);
+
+const format2 = currentDate.toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Kolkata'
+});
+console.log(`mm/dd/yyyy: ${format2}`);
+
+const format3 = currentDate.toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Kolkata'
+});
+console.log(`dd/mm/yyyy: ${format3}`);
+
+//Q4
+const a = 5;
+const b = 6;
+const c = 7;
+const s = (a + b + c) / 2;
+const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+console.log(`The area of the triangle is: ${area.toFixed(2)} square units`);
+
+//Q5
+function rotateStringRight(str) {
+    if (str.length <= 1) {
+        return str;
+    }
+    return str.slice(-1) + str.slice(0, -1);
+}
+const originalString = 'w3resources';
+const rotatedString = rotateStringRight(originalString);
+console.log(`Original string: ${originalString}`);
+console.log(`Rotated string: ${rotatedString}`);
+
+//Q6
+function isLeapYear(year) {
+    if (year % 4 !== 0) {
+        return false;
+    }
+    if (year % 100 !== 0) {
+        return true;
+    }
+    return year % 400 === 0;
+}
+const year = 2021;
+const leapYear = isLeapYear(year);
+console.log(`The year ${year} is ${leapYear ? 'a' : 'not a'} leap year.`);
+
+//Q7
+function findSundayJanuaryFirst(startYear, endYear) {
+    const sundays = [];
+    for (let year = startYear; year <= endYear; year++) {
+        const date = new Date(year, 0, 1);
+        if (date.getDay() === 0) {
+            sundays.push(year);
+        }
+    }
+    return sundays;
+}
+
+const startYear = 2014;
+const endYear = 2050;
+const sundayJanuaryFirstYears = findSundayJanuaryFirst(startYear, endYear);
+console.log(`January 1st is a Sunday in the following years between ${startYear} and ${endYear}:`);
+console.log(sundayJanuaryFirstYears.join(', '));
+
+//Q8
+const randomNumber = Math.floor(Math.random() * 10) + 1;
+const userGuess = prompt("Guess a number between 1 and 10:");
+const guessNumber = parseInt(userGuess, 10);
+
+if (guessNumber === randomNumber) {
+    alert("Good work!");
+} else {
+    alert("Not matched");
+}
+
+//Q9
+function daysUntilNextChristmas() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+    let nextChristmasYear = currentYear;
+    let nextChristmasMonth = 11;
+    let nextChristmasDay = 25;
+    if (currentMonth > 11 || (currentMonth === 11 && currentDay > 25)) {
+        nextChristmasYear++;
+    }
+    const nextChristmas = new Date(nextChristmasYear, nextChristmasMonth, nextChristmasDay);
+    const differenceInMilliseconds = nextChristmas - currentDate;
+    const daysLeft = Math.ceil(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+
+    return daysLeft;
+}
+const daysLeft = daysUntilNextChristmas();
+console.log(`There are ${daysLeft} days left until the next Christmas.`);
+
+//Q10
+let num1 = prompt("Enter the first number:");
+num1 = Number(num1);
+let num2 = prompt("Enter the second number:");
+num2 = Number(num2);
+
+let multiplication = num1 * num2;
+console.log(`Multiplication of ${num1} and ${num2} is: ${multiplication}`);
+if (num2 !== 0) {
+    let division = num1 / num2;
+    console.log(`Division of ${num1} by ${num2} is: ${division}`);
+} else {
+    console.log("Cannot divide by zero.");
+}
+
+
+//Assignment 2
+//Q1
+
+function isString(input) {
+    return typeof input === 'string';
+}
+console.log(isString('Graphic era University'));
+console.log(isString([1, 3, 6.4]));
+
+
+//Q2
+function isStringBlank(str) {
+    const trimmedStr = str.trim();
+    return trimmedStr === '';
+}
+const testString1 = '';
+const testString2 = 'abc';
+
+console.log(`Is "${testString1}" blank? ${isStringBlank(testString1)}`);
+console.log(`Is "${testString2}" blank? ${isStringBlank(testString2)}`);
+
+
+//Q3
+function splitStringIntoWords(str) {
+    const wordsArray = str.split(' ');
+    return wordsArray;
+}
+
+const inputString = "Robin Singh";
+const wordsArray = splitStringIntoWords(inputString);
+console.log(wordsArray);
+
+
+//Q4
+function keepCharacters(str, numChars) {
+    if (str.length === 0 || numChars <= 0) {
+        return '';
+    }
+    numChars = Math.min(numChars, str.length);
+    return str.substring(0, numChars);
+}
+
+const originalString = 'Robin Singh';
+const numCharsToKeep = 4;
+
+const result = keepCharacters(originalString, numCharsToKeep);
+console.log(`Original string: ${originalString}`);
+console.log(`Kept characters: ${result}`);
+
+
+//Q5
+function abbreviateName(fullName) {
+    const words = fullName.split(' ');
+
+    const abbreviatedWords = words.map((word, index) => {
+        if (index === 0) {
+            return word;
+        } else {
+            return word.charAt(0) + '.';
+        }
+    });
+    const abbreviatedName = abbreviatedWords.join(' ');
+
+    return abbreviatedName;
+}
+
+const fullName = 'Robin Singh';
+const abbreviatedName = abbreviateName(fullName);
+console.log(`${abbreviatedName}`);
+
+
+//Q6
+function hideEmailUsername(email) {
+    const regex = /^([^@]+)@/;
+    const hiddenEmail = email.replace(regex, (match, p1) => {
+        const dotsNeeded = p1.length - 5;
+        return p1.slice(0, 5) + '*'.repeat(dotsNeeded) + '@';
+    });
+
+    return hiddenEmail;
+}
+const email = 'robin_singh@example.com';
+const hiddenEmail = hideEmailUsername(email);
+console.log(`Hidden email: ${hiddenEmail}`);
+
+//Q7
+
+
