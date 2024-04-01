@@ -233,6 +233,64 @@ const email = 'robin_singh@example.com';
 const hiddenEmail = hideEmailUsername(email);
 console.log(`Hidden email: ${hiddenEmail}`);
 
-//Q7
 
+//Q7
+function parameterizeString(str) {
+    const lowerCaseStr = str.toLowerCase();
+    const parameterizedStr = lowerCaseStr.replace(/\s+/g, '-');
+
+    return parameterizedStr;
+}
+const originalString = "Robin Singh from INDIA";
+const parameterizedString = parameterizeString(originalString);
+console.log(`${parameterizedString}`);
+
+
+//Q8
+function capitalizeFirstLetter(str) {
+    if (!str || typeof str !== 'string') {
+        return '';
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const originalString = 'js string exercises';
+const capitalizedString = capitalizeFirstLetter(originalString);
+console.log(`${capitalizedString}`);
+
+
+//Q9
+function capitalizeFirstLetterOfEachWord(str) {
+    const words = str.split(' ');
+    const capitalizedWords = words.map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+    return capitalizedWords.join(' ');
+}
+
+const originalString = 'js string exercises';
+const capitalizedString = capitalizeFirstLetterOfEachWord(originalString);
+console.log(`${capitalizedString}`);
+
+
+//Q10
+function invertCase(str) {
+    let lowerCaseStr = str.toLowerCase();
+    let upperCaseStr = str.toUpperCase();
+    let invertedCaseStr = '';
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === upperCaseStr[i]) {
+            invertedCaseStr += lowerCaseStr[i];
+        }
+        else {
+            invertedCaseStr += upperCaseStr[i];
+        }
+    }
+
+    return invertedCaseStr;
+}
+
+const originalString = 'AaBbCc';
+const invertedCaseString = invertCase(originalString);
+console.log(`${invertedCaseString}`);
 
